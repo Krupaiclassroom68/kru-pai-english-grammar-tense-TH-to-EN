@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kru Pai — Tense Builder Set 2 (Galaxy KP)</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;700;900&family=Rubik:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#e9ecf8;--muted:#a9b1d6;--bg1:#0a0f1f;--bg2:#0e1330;--n1:#57e0ff;--n2:#8f7dff;--gold:#ffd166;--ok:#52ffa8;--bad:#ff6b88;}
+*{box-sizing:border-box}html,body{margin:0;height:100%;color:var(--ink);
+font-family:"Noto Sans Thai","Rubik",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+background:radial-gradient(1100px 600px at 12% -10%, #1a2257 0%, transparent 60%),
+           radial-gradient(900px 600px at 112% 0%, #0f1a45 0%, transparent 60%),
+           linear-gradient(180deg,var(--bg1),var(--bg2));}
+.header{position:sticky;top:0;z-index:10;background:linear-gradient(90deg,#0b1030ee,#0a0f1fee);
+  border-bottom:2px solid #0e143a; box-shadow:0 10px 24px rgba(17,24,64,.6); backdrop-filter:blur(6px)}
+.banner{max-width:1100px;margin:auto;display:flex;align-items:center;gap:12px;padding:14px 16px}
+.logo{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;
+  background:radial-gradient(circle at 30% 30%, #fff 0 20%, transparent 40%),
+            conic-gradient(from 0deg, var(--n1), var(--n2), var(--gold), var(--n1));
+  color:#001;font-weight:900;border:4px solid #000;box-shadow:0 0 28px #57e0ff88, inset 0 0 20px #8f7dff55}
+.logo span{background:#000a;color:#fff;padding:2px 6px;border-radius:8px;font-weight:900}
+.brand{font-weight:900;font-size:clamp(18px,2.6vw,28px);color:#fff;text-shadow:0 2px 0 #000}
+.sub{margin-left:auto;font-size:12px;color:var(--muted)}
+.wrap{max-width:1100px;margin:16px auto;padding:0 12px}
+.card{background:linear-gradient(180deg,#141b3f,#0f1633);border:4px solid #000;border-radius:18px;box-shadow:0 12px 0 #000,0 18px 36px rgba(0,0,0,.45)}
+.start{padding:18px;display:grid;gap:14px;justify-items:center;text-align:center}
+.bigtitle{font-weight:900;font-size:clamp(22px,4vw,36px);color:#cfe3ff;text-shadow:0 2px 0 #000}
+.tagline{font-size:clamp(13px,2.4vw,17px);color:var(--muted)}
+.input{display:flex;gap:10px;align-items:center;background:#0c1231;padding:10px 12px;border-radius:14px;border:3px solid #000}
+.input input{border:none;background:transparent;outline:none;font-size:18px;min-width:200px;color:var(--ink)}
+.btn{border:4px solid #000;cursor:pointer;padding:12px 16px;border-radius:14px;background:linear-gradient(180deg,var(--n1),#3bb9e0);color:#001;font-weight:900;box-shadow:0 8px 0 #000,0 16px 28px rgba(87,224,255,.26);transform:translateY(0);transition:.2s}
+.btn:hover{transform:translateY(-2px)}.btn.alt{background:linear-gradient(180deg,var(--gold),#f8b83b)}
+.note{font-size:12px;color:var(--muted)}
+.hud{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:8px;padding:10px 12px;border-bottom:4px solid #000}
+.hud .pill{background:#0c1231;border:3px solid #000;padding:6px 10px;border-radius:999px;font-weight:900;color:#cfe3ff}
+.hud .score{color:#57e0ff}.hud .step{color:#ffd166}
+.progress{height:10px;background:#0b1130;border-radius:999px;overflow:hidden;border:3px solid #000}
+.progress>div{height:100%;background:linear-gradient(90deg,var(--n1),var(--n2),var(--gold));width:0%}
+.stage{padding:12px}
+.qbox{background:linear-gradient(180deg,#0d1436,#0a1030);border:4px solid #000;border-radius:16px;padding:14px;box-shadow:inset 0 0 0 2px #2a356e}
+.qtxt{font-size:clamp(15px,2.6vw,20px);font-weight:900;color:#e8edff;text-align:center}
+.thbox{margin-top:8px;background:linear-gradient(180deg,#0f1633,#0b1231);border:3px solid #000;border-radius:14px;padding:10px 12px;box-shadow:inset 0 0 0 2px #3e2d0a}
+.thlabel{display:inline-block;font-weight:900;font-size:11px;letter-spacing:.3px;color:#14120b;background:#ffd166;border:2px solid #000;padding:3px 8px;border-radius:999px;margin-bottom:6px}
+.thtext{font-weight:900;font-size:clamp(18px,3.2vw,26px);color:#fff;text-align:center;line-height:1.35;position:relative}
+.thtext:after{content:"";position:absolute;left:10%;right:10%;bottom:-6px;height:6px;border-radius:999px;background:linear-gradient(90deg,var(--n1),var(--n2));opacity:.38}
+.opts{display:grid;gap:10px;margin-top:10px}
+.opt{display:flex;gap:8px;align-items:flex-start;background:#101744;border:4px solid #000;border-radius:14px;padding:10px 12px;box-shadow:0 8px 0 #000;cursor:pointer}
+.opt input{margin-top:3px;transform:scale(1.2)}
+.opt label{font-weight:900;font-size:clamp(15px,2.6vw,19px);color:#e9edff;line-height:1.35}
+.footer{position:sticky;bottom:0;z-index:5;padding:10px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;background:linear-gradient(180deg,#0a0f1fcc,#0e1330cc);backdrop-filter:blur(6px);border-top:4px solid #000}
+.footer .btn{min-width:150px}
+.feedback{margin:10px 0;text-align:center}
+.feedback span{display:inline-block;padding:8px 12px;border-radius:14px;font-weight:900;font-size:clamp(15px,2.6vw,19px);box-shadow:0 6px 0 #000;animation:popIn .26s ease-out both}
+.fb-ok{background:#0d2c25;color:#a8ffd8;border:3px solid #000}
+.fb-no{background:#2f0a14;color:#ffb3c1;border:3px solid #000}
+@keyframes popIn{0%{transform:scale(.92);opacity:0}100%{transform:scale(1);opacity:1}}
+.hide{display:none !important}
+.shake{animation:shake .18s linear 0s 2}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.confetti{position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+.confetti i{position:absolute;width:8px;height:12px;opacity:.95;animation:fall 900ms linear forwards}
+@keyframes fall{to{transform:translateY(120vh) rotate(360deg);opacity:0}}
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="banner">
+      <div class="logo"><span>KP</span></div>
+      <div class="brand">Kru Pai Classroom</div>
+      <div class="sub">Tense Builder — Set 2 (Galaxy KP)</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- START -->
+    <div id="intro" class="card start">
+      <div class="bigtitle">Tense Builder — Daily Life</div>
+      <div class="tagline">เลือกประโยคภาษาอังกฤษที่ถูกต้อง (20 ข้อ) — โทน Galaxy 🪐 + แบรนด์ Kru Pai</div>
+      <div class="input"><span>ชื่อเล่น:</span> <input id="nickname" placeholder="พิมพ์ชื่อก่อนเริ่ม"/></div>
+      <button class="btn alt" onclick="startGame()">เริ่มเกมเลย!</button>
+      <div class="note">ตรวจคำตอบแบบ EP2 — กดเลือกคำตอบ แล้วกดปุ่มตรวจ • ผิดลองใหม่ได้ 1 ครั้ง</div>
+    </div>
+
+    <!-- GAME -->
+    <div id="game" class="card hide">
+      <div class="hud">
+        <div class="pill step">ข้อที่ <b id="step">1</b> / 20</div>
+        <div class="pill score">คะแนน: <b id="score">0</b></div>
+        <div class="pill">ผู้เล่น: <b id="who">-</b></div>
+      </div>
+      <div class="progress"><div id="bar"></div></div>
+
+      <div class="stage">
+        <div class="qbox">
+          <div class="qtxt">เลือกประโยคภาษาอังกฤษที่ถูกต้อง</div>
+          <div class="thbox">
+            <div class="thlabel">โจทย์ภาษาไทย</div>
+            <div id="th" class="thtext">—</div>
+          </div>
+
+          <div id="opts" class="opts"></div>
+          <div id="fb" class="feedback"></div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <button class="btn" id="checkBtn" onclick="checkAns()">ตรวจคำตอบ</button>
+        <button class="btn alt" id="nextBtn" onclick="nextQ()" disabled>ข้อต่อไป ➜</button>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div id="summary" class="card hide" style="padding:18px;display:grid;gap:10px;justify-items:center;text-align:center">
+      <div class="bigtitle">จบภารกิจแล้ว! 🎉</div>
+      <div class="tagline">คะแนนของ <b id="who2">-</b> คือ <b id="score2">0</b> / 20</div>
+      <div style="display:grid;gap:8px;max-width:720px">
+        <div>สุดยอด! ลองเล่นซ้ำเพื่อจับจังหวะ Tense ในชีวิตประจำวันให้คล่องขึ้นนะ 🌟</div>
+      </div>
+      <div class="footer">
+        <button class="btn alt" onclick="restart()">กลับหน้าแรก</button>
+        <button class="btn" onclick="startGame()">เล่นอีกครั้ง</button>
+      </div>
+    </div>
+  </div>
+
+<div id="fx" class="confetti hide"></div>
+
+<script>
+const DATA = [{"th": "ฉันกินข้าวเช้าทุกวัน", "opts": ["I eat breakfast every day.", "I eats breakfast every day.", "I am eat breakfast every day.", "I am eating breakfast every day."], "answer": 0}, {"th": "ตอนนี้เธอกำลังกินข้าว", "opts": ["She eats rice now.", "She is eating rice now.", "She ate rice now.", "She has eaten rice now."], "answer": 1}, {"th": "เมื่อวานเขาไปโรงเรียนสาย", "opts": ["He goes to school late yesterday.", "He is going to school late yesterday.", "He went to school late yesterday.", "He has gone to school late yesterday."], "answer": 2}, {"th": "พวกเราจะไปตลาดพรุ่งนี้", "opts": ["We go to the market tomorrow.", "We will go to the market tomorrow.", "We are go to the market tomorrow.", "We went to the market tomorrow."], "answer": 1}, {"th": "เธอยังทำการบ้านไม่เสร็จเลย", "opts": ["She hasn't finished her homework yet.", "She didn't finish her homework yet.", "She don't finish her homework yet.", "She isn't finishing her homework yet."], "answer": 0}, {"th": "พ่อขับรถไปทำงานทุกวัน", "opts": ["Dad drive to work every day.", "Dad drives to work every day.", "Dad is driving to work every day.", "Dad drove to work every day."], "answer": 1}, {"th": "ตอนเย็นเราไม่ดูทีวี", "opts": ["We do not watch TV in the evening.", "We does not watch TV in the evening.", "We are not watch TV in the evening.", "We didn't watch TV in the evening."], "answer": 0}, {"th": "เขาเพิ่งล้างจานเสร็จเมื่อกี้", "opts": ["He just finishes the dishes.", "He has just finished the dishes.", "He is just finishing the dishes.", "He just finished the dishes since now."], "answer": 1}, {"th": "แม่กำลังทำอาหารอยู่ในครัว", "opts": ["Mom cooks in the kitchen now.", "Mom is cooking in the kitchen now.", "Mom cooked in the kitchen now.", "Mom will cook in the kitchen now."], "answer": 1}, {"th": "พวกเขาเคยไปเชียงใหม่สองครั้ง", "opts": ["They went to Chiang Mai two times.", "They are been to Chiang Mai twice.", "They have been to Chiang Mai twice.", "They have gone to Chiang Mai yesterday twice."], "answer": 2}, {"th": "ฉันไม่ได้ใช้โทรศัพท์ตอนนี้", "opts": ["I do not use my phone now.", "I am not using my phone now.", "I did not use my phone now.", "I will not use my phone now."], "answer": 1}, {"th": "เมื่อเช้าเธอทำกุญแจหาย", "opts": ["She loses her key this morning.", "She lost her key this morning.", "She has lost her key this morning.", "She is losing her key this morning."], "answer": 1}, {"th": "ครูของเรากำลังสอนคณิตอยู่", "opts": ["Our teacher teaches math now.", "Our teacher is teaching math now.", "Our teacher taught math now.", "Our teacher has taught math now."], "answer": 1}, {"th": "คุณชอบวิทยาศาสตร์ไหม", "opts": ["Do you like science?", "Are you like science?", "Did you like science?", "Do you liking science?"], "answer": 0}, {"th": "ฝนตกหนักเมื่อวาน", "opts": ["It rains heavily yesterday.", "It rained heavily yesterday.", "It is raining heavily yesterday.", "It has rained heavily yesterday."], "answer": 1}, {"th": "ฉันทำห้องสะอาดแล้วเรียบร้อย", "opts": ["I already clean my room.", "I am already cleaning my room.", "I have already cleaned my room.", "I already cleaned my room since now."], "answer": 2}, {"th": "พวกเขาจะไม่เล่นฟุตบอลพรุ่งนี้", "opts": ["They not will play football tomorrow.", "They will not play football tomorrow.", "They do not play football tomorrow.", "They did not play football tomorrow."], "answer": 1}, {"th": "เธอมักจะตื่นนอนตอนหกโมง", "opts": ["She usually wake up at six.", "She usually wakes up at six.", "She is usually waking up at six.", "She has usually woke up at six."], "answer": 1}, {"th": "ตอนนี้ฉันกำลังรอรถเมล์", "opts": ["I wait for the bus now.", "I am waiting for the bus now.", "I waited for the bus now.", "I have waited for the bus now."], "answer": 1}, {"th": "เรายังไม่ได้กินข้าวเย็นเลย", "opts": ["We didn't have dinner yet.", "We haven't had dinner yet.", "We don't have dinner yet.", "We aren't having dinner yet."], "answer": 1}];
+
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+let order, idx=0, score=0, nickname="", choice=-1, tries=0;
+
+function startGame(){
+  nickname = (document.getElementById('nickname').value || "ผู้เล่น").trim();
+  document.getElementById('who').textContent = nickname;
+  document.getElementById('who2').textContent = nickname;
+  document.getElementById('intro').classList.add('hide');
+  document.getElementById('summary').classList.add('hide');
+  document.getElementById('game').classList.remove('hide');
+  score=0; idx=0; order = shuffle([...Array(DATA.length).keys()]);
+  renderQ(); beep(1000,0.06,'triangle');
+}
+document.getElementById('nickname').addEventListener('keydown',e=>{ if(e.key==='Enter') startGame(); });
+
+function renderQ(){
+  const item = DATA[ order[idx] ];
+  document.getElementById('th').textContent = item.th;
+  const wrap = document.getElementById('opts');
+  wrap.innerHTML = "";
+  choice = -1; tries = 0;
+  document.getElementById('fb').innerHTML = "";
+  document.getElementById('step').textContent = (idx+1);
+  document.getElementById('score').textContent = score;
+  document.getElementById('bar').style.width = (idx/DATA.length*100)+'%';
+  document.getElementById('nextBtn').disabled = true;
+
+  const shuffled = item.opts.map((t,i)=>({t,i}));
+  shuffle(shuffled).forEach((o,slot)=>{
+    const id = 'opt'+slot;
+    const row = document.createElement('div'); row.className='opt';
+    const radio = document.createElement('input'); radio.type='radio'; radio.name='opt'; radio.id=id; radio.value=o.i;
+    const label = document.createElement('label'); label.setAttribute('for', id); label.textContent = o.t;
+    row.addEventListener('click', ()=>{ radio.checked = true; choice = parseInt(radio.value); });
+    row.appendChild(radio); row.appendChild(label); wrap.appendChild(row);
+  });
+}
+
+function checkAns(){
+  if(choice<0){ fb('fb-no','ยังไม่ได้เลือกคำตอบนะ'); beep(220,0.10,'sawtooth'); return; }
+  const item = DATA[ order[idx] ];
+  if(choice===item.answer){ // correct
+    score += 1;
+    document.getElementById('score').textContent = score;
+    fb('fb-ok','ถูกต้องจ้า 🎉'); burst();
+    document.getElementById('nextBtn').disabled = false;
+    beep(1200,0.08,'triangle');
+  }else{
+    tries += 1;
+    if(tries>=2){ // reveal & lock, go next
+      fb('fb-no','เฉลย: '+ item.opts[item.answer]);
+      document.getElementById('nextBtn').disabled = false;
+      beep(280,0.10,'square');
+    }else{
+      fb('fb-no','ยังไม่ใช่ ลองอีกครั้งนะ');
+      beep(280,0.10,'square');
+    }
+  }
+}
+
+function nextQ(){
+  if(idx < DATA.length-1){ idx++; renderQ(); }
+  else{ endGame(); }
+}
+
+function endGame(){
+  document.getElementById('game').classList.add('hide');
+  document.getElementById('summary').classList.remove('hide');
+  document.getElementById('score2').textContent = score;
+  document.getElementById('bar').style.width = '100%';
+  for(let i=0;i<5;i++) setTimeout(()=>burst(), i*220);
+  beep(880,0.12,'sine'); setTimeout(()=>beep(1320,0.12,'sine'),120);
+}
+
+function restart(){
+  document.getElementById('summary').classList.add('hide');
+  document.getElementById('intro').classList.remove('hide');
+}
+
+function fb(cls,msg){ const el=document.getElementById('fb'); el.innerHTML = `<span class="${cls}">${msg}</span>`; }
+
+function burst(){
+  const fx = document.getElementById('fx');
+  fx.classList.remove('hide'); fx.innerHTML = "";
+  const colors = [getComputedStyle(document.documentElement).getPropertyValue('--n1').trim(),
+                  getComputedStyle(document.documentElement).getPropertyValue('--n2').trim(),
+                  getComputedStyle(document.documentElement).getPropertyValue('--gold').trim(),
+                  getComputedStyle(document.documentElement).getPropertyValue('--ok').trim(),
+                  getComputedStyle(document.documentElement).getPropertyValue('--bad').trim()];
+  for(let i=0;i<42;i++){ const e=document.createElement('i'); const x=Math.random()*100;
+    e.style.left = x+'vw'; e.style.top = '-10vh'; e.style.background = colors[i%colors.length];
+    e.style.transform = `translateY(0) rotate(${Math.random()*180}deg)`; e.style.animationDelay=(Math.random()*0.12)+'s'; fx.appendChild(e); }
+  setTimeout(()=>{ fx.classList.add('hide'); fx.innerHTML=''; }, 1000);
+}
+
+// tiny beep
+function beep(f=880,d=0.08,type='sine'){
+  try{ const ctx=new (window.AudioContext||window.webkitAudioContext)(); const o=ctx.createOscillator(); const g=ctx.createGain();
+    o.type=type; o.frequency.value=f; o.connect(g); g.connect(ctx.destination);
+    const now=ctx.currentTime; g.gain.setValueAtTime(0.001,now); g.gain.exponentialRampToValueAtTime(0.2,now+0.01);
+    g.gain.exponentialRampToValueAtTime(0.001,now+d); o.start(); o.stop(now+d+0.02);
+  }catch(e){}
+}
+</script>
+</body>
+</html>
